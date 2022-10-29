@@ -6,7 +6,7 @@ using Web.Entity.Context;
 
 namespace Web.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api")]
     [ApiController]
     public class UserController : ControllerBase
     {
@@ -17,12 +17,14 @@ namespace Web.Controllers
         }
 
         [HttpGet]
+        [Route("user")]
         public async Task<ActionResult<List<User>>> GetUser()
         {
             return await _dbContext.Users.ToListAsync();
         }
 
         [HttpGet]
+        [Route("user/{userId}")]
         public async Task<ActionResult<User>> GetUserById(int userId)
         {
             var result = await _dbContext.Users.FirstOrDefaultAsync(x => x.Id == userId);
@@ -35,14 +37,40 @@ namespace Web.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult> AuthenticateUser(User userDto)
+        [Route("user")]
+        public async Task<ActionResult> AddUser([FromBody] User userDto)
         {
             if (userDto == null)
             {
                 return BadRequest();
             }
 
-            var user = await _dbContext.Users.FirstOrDefaultAsync(x => x.Id == userDto.Id);
+            await _dbContext.Users.AddAsync(userDto);
+            var result = await _dbContext.SaveChangesAsync();
+            if (result > 0)
+            {
+                return Ok(new
+                {
+                    Data = userDto
+                });
+            }
+
+            return Ok(new
+            {
+                Message = "Login Success!"
+            });
+        }
+
+        [HttpPost]
+        [Route("login")]
+        public async Task<ActionResult> AuthenticateUser([FromBody] User userDto)
+        {
+            if (userDto == null)
+            {
+                return BadRequest();
+            }
+
+            var user = await _dbContext.Users.FirstOrDefaultAsync(x => x.Username == userDto.Username && x.Password == userDto.Password);
             if (user == null)
             {
                 return NotFound(new

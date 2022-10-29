@@ -7,7 +7,6 @@ namespace Web.Entity.Context
 
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
         {
-
         }
 
         public DbSet<User> Users { get; set; }
@@ -16,7 +15,14 @@ namespace Web.Entity.Context
         {
             modelBuilder.HasDefaultSchema("public");
             modelBuilder.Entity<User>().ToTable("users");
-            ////base.OnModelCreating(modelBuilder);
+            base.OnModelCreating(modelBuilder);
         }
+
+        public override int SaveChanges()
+        {
+            ChangeTracker.DetectChanges();
+            return base.SaveChanges();
+        }
+
     }
 }
