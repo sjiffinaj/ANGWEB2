@@ -1,0 +1,19 @@
+
+<mat-toolbar color="primary">
+  <button mat-icon-button (click)="opened = !opened">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <span>Restaurant Manager</span>
+  <span class="toolbar-spacer"></span>
+  <button mat-flat-button color="warn">Add Product</button>
+</mat-toolbar>
+<mat-sidenav-container>
+  <mat-sidenav [(opened)]="opened" mode="over">
+    <button>
+      <a routerLink="product">Product</a>
+    </button>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <router-outlet name="navContent"></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>
