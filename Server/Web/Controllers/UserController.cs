@@ -67,28 +67,5 @@ namespace Web.Controllers
             });
         }
 
-        [HttpPost]
-        [Route("login")]
-        public async Task<ActionResult> AuthenticateUser([FromBody] LoginDto userDto)
-        {
-            if (userDto == null)
-            {
-                return BadRequest();
-            }
-
-            var user = await _dbContext.Users.FirstOrDefaultAsync(x => x.Username == userDto.Username && x.Password == userDto.Password);
-            if (user == null)
-            {
-                return NotFound(new
-                {
-                    Message = "User Not Found!"
-                });
-            }
-
-            return Ok(new
-            {
-                Message = "Login Success!"
-            });
-        }
     }
 }
