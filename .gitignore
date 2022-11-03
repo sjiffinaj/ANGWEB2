@@ -4,3 +4,5 @@
 /Server/Web/obj
 /Server/Web/.config
 /Server/Web/.vs
+/WebClient/.vscode
+/WebClient/.angular
