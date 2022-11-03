@@ -6,10 +6,9 @@ import { ProductListComponent } from './components/main/product/product-list/pro
 import { SignupComponent } from './components/signup/signup.component';
 
 const routes: Routes = [
-  {path:'', component:LoginComponent},
   {path:'login', component:LoginComponent},
   {path:'signup', component:SignupComponent},
-  {path:'main', component:MainComponent, children: [
+  {path:'', component:MainComponent, children: [
     { 
       path:'product', component:ProductListComponent
      }

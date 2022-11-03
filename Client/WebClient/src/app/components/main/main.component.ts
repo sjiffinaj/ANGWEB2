@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-main',
@@ -8,9 +9,22 @@ import { Component, OnInit } from '@angular/core';
 export class MainComponent implements OnInit {
 
   opened=false;
-  constructor() { }
+  constructor(private router:Router) { }
 
   ngOnInit(): void {
   }
 
+  onClick(id:any) : void
+  {
+    switch(id)
+    {
+      case 1:{
+        this.router.navigate(['product']);
+        break;
+        }
+      default:{
+        this.router.navigate(['product']);
+      }
+    }
+  }
 }
