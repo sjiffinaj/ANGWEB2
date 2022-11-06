@@ -8,10 +8,6 @@ const routes: Routes = [
     component:LoginComponent
   },
   {
-    path:'login',
-    component:LoginComponent
-  },
-  {
     path:'**',
     component:LoginComponent
   }

@@ -4,12 +4,12 @@ import { AuthModule } from './auth/auth.module';
 
 const routes: Routes = [
   {
-    path:'', 
+    path:'login', 
     loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule)
   },
   {
-    path:'log', 
-    loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule)
+    path:'main', 
+    loadChildren: () => import('./main/main.module').then(m => m.MainModule)
   }
 ];
 

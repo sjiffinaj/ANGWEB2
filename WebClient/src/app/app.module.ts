@@ -6,17 +6,16 @@ import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
-import {MatSidenavModule} from '@angular/material/sidenav';
-import {MatListModule} from '@angular/material/list'
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatSelectModule} from '@angular/material/select';
+import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    ConfirmDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -24,13 +23,10 @@ import {MatSelectModule} from '@angular/material/select';
     NgbModule, 
     HttpClientModule,
     BrowserAnimationsModule,
-    MatToolbarModule,
     MatIconModule,
     MatButtonModule,
-    MatSidenavModule,
     MatFormFieldModule,
-    MatSelectModule,
-    MatListModule
+    MatSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent]
