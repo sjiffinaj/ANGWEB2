@@ -26,7 +26,7 @@ export class UserListComponent implements OnInit {
     private notificationService: NotifyService,
     private dialogService: DialogService) { }
 
-  listData: MatTableDataSource<any>;
+  listData: MatTableDataSource<any> = new MatTableDataSource;
   displayedColumns: string[] = ['fullName', 'email', 'mobile', 'city', 'UserTypeName', 'actions'];
   @ViewChild(MatSort) sort: MatSort | undefined;
   @ViewChild(MatPaginator) paginator: MatPaginator | undefined;

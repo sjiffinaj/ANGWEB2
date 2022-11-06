@@ -31,7 +31,6 @@ import { UsersComponent } from './users/users.component';
 import { UserListComponent } from './users/user-list/user-list.component';
 import { UserComponent } from './users/user/user.component';
 import { ConfirmDialogComponent } from '../confirm-dialog/confirm-dialog.component';
-import { BrowserModule } from '@angular/platform-browser';
 import { ReactiveFormsModule,FormsModule } from "@angular/forms";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DatePipe } from '@angular/common';
@@ -71,7 +70,6 @@ import { DatePipe } from '@angular/common';
     MatSortModule,
     MatDialogModule,
 
-    BrowserModule,
     ReactiveFormsModule,
     FormsModule,
     BrowserAnimationsModule,

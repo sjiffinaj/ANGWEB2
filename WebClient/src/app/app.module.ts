@@ -11,6 +11,8 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatSelectModule} from '@angular/material/select';
 import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
+import { MatDialogModule } from '@angular/material/dialog';
+
 
 @NgModule({
   declarations: [
@@ -26,7 +28,8 @@ import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.componen
     MatIconModule,
     MatButtonModule,
     MatFormFieldModule,
-    MatSelectModule
+    MatSelectModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]
