@@ -5,7 +5,7 @@ import { UserComponent } from './../user/user.component';
 import { UserService } from '../../services/user.service';
 import { UserTypeService } from '../../services/user-type.service';
 // import { MatDialog, MatDialogConfig } from "@angular/material";
-import { NotifyService } from '../../../shared/notify.service';
+// import { NotifyService } from '../../../shared/notify.service';
 import { DialogService } from '../../../shared/dialog.service';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
@@ -23,11 +23,11 @@ export class UserListComponent implements OnInit {
   constructor(private service: UserService,
     private UserTypeService: UserTypeService,
     private dialog: MatDialog,
-    private notificationService: NotifyService,
+    // private notificationService: NotifyService,
     private dialogService: DialogService) { }
 
   listData: MatTableDataSource<any> = new MatTableDataSource;
-  displayedColumns: string[] = ['fullName', 'email', 'mobile', 'city', 'UserTypeName', 'actions'];
+  displayedColumns: string[] = ['fullName', 'email', 'mobile', 'city', 'userType', 'actions'];
   @ViewChild(MatSort) sort: MatSort | undefined;
   @ViewChild(MatPaginator) paginator: MatPaginator | undefined;
   searchKey: string = "";
@@ -87,7 +87,7 @@ export class UserListComponent implements OnInit {
     .afterClosed().subscribe(res =>{
       if(res){
         // this.service.deleteUser($key);
-        this.notificationService.warn('! Deleted successfully');
+        // this.notificationService.warn('! Deleted successfully');
       }
     });
   }

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { FormGroup, FormControl, Validators } from "@angular/forms";
 import * as _ from 'lodash';
-import { DatePipe } from '@angular/common';
+// import { DatePipe } from '@angular/common';
 import { HttpClient } from '@angular/common/http'
 import { environment } from 'src/environments/environment';
 import {User} from '../../models/user.model'
@@ -14,7 +14,7 @@ import { min } from 'lodash';
 export class UserService {
 
   baseApiUrl:string = environment.baseApiUrl;
-  constructor(private http: HttpClient, private datePipe: DatePipe) { }
+  constructor(private http: HttpClient) { }
 
   UserList: User[] = [];
 
@@ -38,7 +38,7 @@ export class UserService {
       mobile: '',
       city: '',
       gender: '1',
-      department: 0,
+      userType: 0,
       hireDate: '',
       isPermanent: false
     });
@@ -88,6 +88,6 @@ export class UserService {
   }
 
   populateForm(user : any) {
-    this.form.setValue(_.omit(user,'departmentName'));
+    // // this.form.setValue(_.omit(user,'departmentName'));
   }
 }

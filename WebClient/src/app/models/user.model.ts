@@ -5,7 +5,7 @@ export interface User{
     $key: string,
     city: string,
     gender: number,
-    department: number,
+    userType: number,
     hireDate : string | null,
     isPermanent:boolean
 }
