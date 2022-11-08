@@ -34,7 +34,7 @@ export class UserTypeService {
 
 
    getUsers() : Observable<UserType[]> {
-    return this.http.get<UserType[]>(this.baseApiUrl + 'usertypes');
+    return this.http.get<UserType[]>(this.baseApiUrl + 'usertype');
   }
 
    getDepartmentName($key:string) {

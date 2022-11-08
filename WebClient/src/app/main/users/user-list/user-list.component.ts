@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit, ViewChild } from '@angular/core';
 
 import { UserComponent } from './../user/user.component';
 // import { MatTableDataSource, MatSort, MatPaginator } from '@angular/material';
@@ -10,7 +10,8 @@ import { DialogService } from '../../../shared/dialog.service';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
-import { MatPaginator } from '@angular/material/paginator';
+import { MatPaginator, MatPaginatorIntl } from '@angular/material/paginator';
+import { User } from 'src/app/models/user.model';
 
 
 @Component({
@@ -26,29 +27,26 @@ export class UserListComponent implements OnInit {
     // private notificationService: NotifyService,
     private dialogService: DialogService) { }
 
-  listData: MatTableDataSource<any> = new MatTableDataSource;
-  displayedColumns: string[] = ['fullName', 'email', 'mobile', 'city', 'userType', 'actions'];
-  @ViewChild(MatSort) sort: MatSort | undefined;
-  @ViewChild(MatPaginator) paginator: MatPaginator | undefined;
+  listData: MatTableDataSource<User> = new MatTableDataSource<User>;
+  displayedColumns: string[] = ['firstname','fullName', 'email', 'mobile', 'city', 'userType', 'actions'];
+  @ViewChild(MatSort) sort = new MatSort ;
+  @ViewChild(MatPaginator) paginator = MatPaginator;
   searchKey: string = "";
+  loading = true;
 
   ngOnInit() {
     this.service.getUsers().subscribe(
       list => {
+        this.loading = false;
         let array = list.map(item => {
-          // let UserTypeName = this.UserTypeService.getUserTypeName(item.payload.val()['UserType']);
-          // return {
-          //   $key: item.key,
-          //   UserTypeName,
-          //   ...item.payload.val()
-          // };
+          return item;
         });
         this.listData = new MatTableDataSource(array);
-        // this.listData.sort = this.sort;
+        this.listData.sort = this.sort;
         // this.listData.paginator = this.paginator;
         this.listData.filterPredicate = (data, filter) => {
           return this.displayedColumns.some(ele => {
-            return ele != 'actions' && data[ele].toLowerCase().indexOf(filter) != -1;
+            return ele != 'actions' && data.fullName.toLowerCase().indexOf(filter) != -1;
           });
         };
       });
@@ -60,7 +58,7 @@ export class UserListComponent implements OnInit {
   }
 
   applyFilter() {
-    // this.listData.filter = this.searchKey.trim().toLowerCase();
+    this.listData.filter = this.searchKey.trim().toLowerCase();
   }
 
 

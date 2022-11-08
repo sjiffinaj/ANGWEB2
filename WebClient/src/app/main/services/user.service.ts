@@ -46,7 +46,7 @@ export class UserService {
 
 
   getUsers() : Observable<User[]> {
-    return this.http.get<User[]>(this.baseApiUrl + 'users');
+    return this.http.get<User[]>(this.baseApiUrl + 'user');
   }
 
   insertUser(user : User): Observable<User> {

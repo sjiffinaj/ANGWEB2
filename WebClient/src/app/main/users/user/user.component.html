@@ -1,5 +1,5 @@
 <mat-toolbar>
-    <span>{{service.form.controls['$key'].value?"Modify User":"New User"}}</span>
+    <span>{{service.form.controls['id'].value?"Modify User":"New User"}}</span>
     <span class="fill-remaining-space"></span>
     <button class="btn-dialog-close" mat-stroked-button (click)="onClose()" tabIndex="-1"><mat-icon>clear</mat-icon></button>
   </mat-toolbar>
@@ -7,7 +7,7 @@
     <mat-grid-list cols="2" rowHeight="300px">
       <mat-grid-tile>
         <div class="controles-container">
-          <input type="hidden" formControlName="$key">
+          <input type="hidden" formControlName="id">
           <mat-form-field>
             <input formControlName="fullName" matInput placeholder="Full Name*">
             <mat-error>This field is mandatory.</mat-error>
@@ -39,7 +39,7 @@
             <mat-select formControlName="userType" placeholder="Type">
               <mat-option>None</mat-option>
               <!-- <ng-container *ngFor="let userType of userTypeService">
-                <mat-option value="{{userType.$key}}">{{userType.code}}-{{userType.name}}</mat-option>
+                <mat-option value="{{userType.id}}">{{userType.code}}-{{userType.name}}</mat-option>
               </ng-container> -->
             </mat-select>
           </mat-form-field>

@@ -63,7 +63,63 @@ namespace Web.Controllers
 
             return Ok(new
             {
-                Message = "Login Success!"
+                Message = "Create failed!"
+            });
+        }
+
+
+        [HttpPut]
+        [Route("user")]
+        public async Task<ActionResult> ModifyUser([FromBody] UserDto userDto)
+        {
+            if (userDto == null)
+            {
+                return BadRequest();
+            }
+
+            var user = _mapper.Map<User>(userDto);
+            _dbContext.Users.Update(user);
+            var result = await _dbContext.SaveChangesAsync();
+            if (result > 0)
+            {
+                return Ok(new
+                {
+                    Data = _mapper.Map<UserDto>(user)
+                });
+            }
+
+            return Ok(new
+            {
+                Message = "Update failed!"
+            });
+        }
+
+
+        [HttpDelete]
+        [Route("user")]
+        public async Task<ActionResult> DeleteUser(int userId)
+        {
+            var deletedUser = _dbContext.Users.FirstOrDefault(x => x.Id == userId);
+            if (deletedUser == null)
+            {
+                return Ok(new
+                {
+                    Message = "User not exist!"
+                });
+            }
+            _dbContext.Users.Remove(deletedUser);
+            var result = await _dbContext.SaveChangesAsync();
+            if (result > 0)
+            {
+                return Ok(new
+                {
+                    Message = "Delete success!"
+                });
+            }
+
+            return Ok(new
+            {
+                Message = "Delete failed!"
             });
         }
 

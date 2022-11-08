@@ -10,6 +10,8 @@ namespace Web.Entity.Context
         }
 
         public DbSet<User> Users { get; set; }
+        public DbSet<UserType> UserTypes { get; set; }
+
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
