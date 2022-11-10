@@ -19,7 +19,7 @@ export class UserService {
   UserList: User[] = [];
 
   form: FormGroup = new FormGroup({
-    $key: new FormControl(null),
+    id: new FormControl(null),
     fullName: new FormControl('', Validators.required),
     email: new FormControl('', Validators.email),
     mobile: new FormControl('', [Validators.required, Validators.minLength(8)]),
@@ -32,7 +32,7 @@ export class UserService {
 
   initializeFormGroup() {
     this.form.setValue({
-      $key: null,
+      id: null,
       fullName: '',
       email: '',
       mobile: '',
@@ -51,40 +51,14 @@ export class UserService {
 
   insertUser(user : User): Observable<User> {
     return this.http.post<User>(this.baseApiUrl + 'users', user);
-
-    // return this.UserList.push({
-    //   $key:user.$key,
-    //   fullName: user.fullName,
-    //   email: user.email,
-    //   mobile: user.mobile,
-    //   city: user.city,
-    //   gender: user.gender,
-    //   department: user.department,
-    //   hireDate: user.hireDate == "" ? "" : this.datePipe.transform(user.hireDate, 'yyyy-MM-dd'),
-    //   isPermanent: user.isPermanent
-    // });
   }
 
   updateUser(user : User) : Observable<User> {
     return this.http.put<User>(this.baseApiUrl + 'users', user);
-
-    // return this.UserList.update(user.$key,
-    //   {
-    //     fullName: user.fullName,
-    //     email: user.email,
-    //     mobile: user.mobile,
-    //     city: user.city,
-    //     gender: user.gender,
-    //     department: user.department,
-    //      hireDate: user.hireDate == "" ? "" : this.datePipe.transform(user.hireDate, 'yyyy-MM-dd'),
-    //     isPermanent: user.isPermanent
-    //   });
   }
 
   deleteUser(id: string) {
     return this.http.delete<User>(this.baseApiUrl + 'users/'+id);
-
-    // this.UserList.remove($key);
   }
 
   populateForm(user : any) {

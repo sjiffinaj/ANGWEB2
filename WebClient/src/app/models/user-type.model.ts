@@ -1,5 +1,5 @@
 export interface UserType{
-    $key: string,
+    id: string,
     code: string,
     value: string,
 }

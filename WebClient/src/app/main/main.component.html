@@ -1,11 +1,14 @@
-<div class="toolbar">
+<div>
   <mat-toolbar color="primary">
     <button mat-icon-button (click)="opened = !opened">
       <mat-icon>menu</mat-icon>
     </button>
     <span>Restaurant Manager</span>
+    <div class="badge-spacer">
+      <mat-icon matBadge="15" matBadgeColor="warn" class="icon-display">notifications</mat-icon>
+    </div>
     <span class="toolbar-spacer"></span>
-    <button mat-flat-button color="warn">Add Product</button>
+    <button mat-flat-button color="warn">Notify</button>
   </mat-toolbar>
 </div>
 <div class="sidenav"> 
@@ -24,7 +27,10 @@
   </mat-sidenav-container>
 </div>
 <div class="footer">
-  WHO DFS
+  <mat-toolbar>
+    <mat-icon>copyright</mat-icon>
+    <span>@ CopyRight JSJ</span>
+  </mat-toolbar>
 </div>
 
   

@@ -32,6 +32,7 @@ import { UserComponent } from './users/user/user.component';
 import { ConfirmDialogComponent } from '../confirm-dialog/confirm-dialog.component';
 import { ReactiveFormsModule,FormsModule } from "@angular/forms";
 import { DatePipe } from '@angular/common';
+import {MatBadgeModule} from '@angular/material/badge';
 
 @NgModule({
   declarations: [
@@ -69,7 +70,8 @@ import { DatePipe } from '@angular/common';
 
     ReactiveFormsModule,
     FormsModule,
-    DatePipe
+    DatePipe,
+    MatBadgeModule
 
   ],
   providers: [UserComponent,UserListComponent,DatePipe],

@@ -80,11 +80,11 @@ export class UserListComponent implements OnInit {
     this.dialog.open(UserComponent,dialogConfig);
   }
 
-  onDelete($key: any){
+  onDelete(id: any){
     this.dialogService.openConfirmDialog('Are you sure to delete this record ?')
     .afterClosed().subscribe(res =>{
       if(res){
-        // this.service.deleteUser($key);
+        // this.service.deleteUser(id);
         // this.notificationService.warn('! Deleted successfully');
       }
     });

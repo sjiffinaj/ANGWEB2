@@ -41,7 +41,7 @@ export class UserComponent implements OnInit {
 
   onSubmit() {
     if (this.service.form.valid) {
-      if (!this.service.form.get('$key')?.value)
+      if (!this.service.form.get('id')?.value)
         this.service.insertUser(this.service.form.value);
       else
       this.service.updateUser(this.service.form.value);

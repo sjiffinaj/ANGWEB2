@@ -17,14 +17,6 @@ export class UserTypeService {
     this.getUsers().subscribe({
       next:(user=>{
         console.log(user);
-        //  user.map(item => {
-        //   return {
-        //     $key: item.$key,
-        //     // : item.code,
-        //     // $key: item.$key,
-        //     // ...item.payload.val()
-        //   };
-        // });
       }),
       error:(response)=>{
         console.log(response);
@@ -37,11 +29,11 @@ export class UserTypeService {
     return this.http.get<UserType[]>(this.baseApiUrl + 'usertype');
   }
 
-   getDepartmentName($key:string) {
-    // if ($key == "0")
+   getDepartmentName(id:string) {
+    // if (id == "0")
       return "";
     // else{
-    //   return _.find(this.array, (obj) => { return obj.$key == $key; })['name'];
+    //   return _.find(this.array, (obj) => { return obj.id == id; })['name'];
     }
   }
 
