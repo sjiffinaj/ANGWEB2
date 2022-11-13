@@ -1,29 +1,26 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Web.Entity
 {
-    public class User
+    public class User : BaseEntity
     {
-        [Key]
-        public int Id { get; set; }
-        [Required]
-        public string FirstName { get; set; }
+        public string Name { get; set; }
 
-        public string LastName { get; set; }
-        
-        [Required]
-        public string Username { get; set; }
-        
-        [Required]
-        public string Password { get; set; }
-
-        [Required]
-        public string Role { get; set; }
-
-        [Required]
         public string Email { get; set; }
 
-        [Required]
         public string PhoneNumber { get; set; }
+
+        public string Username { get; set; }
+        
+        public string Password { get; set; }
+
+        public string  PhotoUrl { get; set; }
+
+        public byte Sex { get; set; }
+
+        public int UserTypeId { get; set; }
+
+        public virtual UserType UserType { get; set; }
     }
 }

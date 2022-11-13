@@ -2,15 +2,14 @@
 
 namespace Web.Entity
 {
-    public class UserType
+    public class UserType : BaseEntity
     {
-        [Key]
-        public int Id { get; set; }
+        [Required]
+        public string Type { get; set; }
 
         [Required]
-        public string Code { get; set; }
+        public long Value { get; set; }
 
-        [Required]
-        public string Value { get; set; }
+        public virtual ICollection<User> Users { get; set; }
     }
 }
