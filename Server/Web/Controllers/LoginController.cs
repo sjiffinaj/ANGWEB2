@@ -47,7 +47,7 @@ namespace Web.Controllers
             return Ok(new
             {
                 StatusCode = 200,
-                Role = user.Role,
+                //Role = user.Role,
                 Message = "Login Success!",
                 JwtToken = token
             });

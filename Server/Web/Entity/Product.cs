@@ -11,6 +11,9 @@
 
         public long ProductStockId { get; set; }
 
-        public virtual ICollection<Stock> Stocks { get; set; }
+        public virtual ICollection<ProductStock> ProductStocks { get; set; }
+        public virtual ICollection<OrderDetail> OrderDetails { get; set; }
+        public virtual ICollection<DailyProductDetail> DailyProductDetails { get; set; }
+
     }
 }

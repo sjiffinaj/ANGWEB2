@@ -21,6 +21,10 @@ namespace Web.Entity.Context
             //modelBuilder.Entity<User>().ToTable("users");
 
             UserRelations(modelBuilder);
+            StockRelations(modelBuilder);
+            ProductRelations(modelBuilder);
+            OrderRelations(modelBuilder);
+            DineInRelations(modelBuilder);
 
             base.OnModelCreating(modelBuilder);
         }
@@ -32,6 +36,50 @@ namespace Web.Entity.Context
                 .WithMany(x => x.Users)
                 .HasForeignKey(x => x.UserTypeId);
         }
+        private void StockRelations(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Stock>()
+                .HasMany(x => x.StockDetails)
+                .WithOne(x => x.Stock)
+                .HasForeignKey(x => x.StockId);
+            modelBuilder.Entity<Stock>()
+                .HasMany(x => x.ProductStocks)
+                .WithOne(x => x.Stock)
+                .HasForeignKey(x => x.StockId);
+        }
+        private void ProductRelations(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Product>()
+                .HasMany(x => x.ProductStocks)
+                .WithOne(x => x.Product)
+                .HasForeignKey(x => x.ProductId);
+            modelBuilder.Entity<Product>()
+                .HasMany(x => x.OrderDetails)
+                .WithOne(x => x.Product)
+                .HasForeignKey(x => x.ProductId);
+            modelBuilder.Entity<Product>()
+                .HasMany(x => x.DailyProductDetails)
+                .WithOne(x => x.Product)
+                .HasForeignKey(x => x.ProductId);
+        }
+
+        private void OrderRelations(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Order>()
+                .HasMany(x => x.OrderDetails)
+                .WithOne(x => x.Order)
+                .HasForeignKey(x => x.OrderId);
+            
+        }
+
+        private void DineInRelations(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<DineInTable>()
+                .HasMany(x => x.Orders)
+                .WithOne(x => x.DineInTable)
+                .HasForeignKey(x => x.DineInTableId);
+        }
+
 
         public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
         {

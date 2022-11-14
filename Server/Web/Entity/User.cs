@@ -19,7 +19,7 @@ namespace Web.Entity
 
         public byte Sex { get; set; }
 
-        public int UserTypeId { get; set; }
+        public long UserTypeId { get; set; }
 
         public virtual UserType UserType { get; set; }
     }

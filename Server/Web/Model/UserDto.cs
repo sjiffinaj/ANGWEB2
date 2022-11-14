@@ -5,7 +5,7 @@ namespace Web.Model
     public class UserDto
     {
         [Key]
-        public int Id { get; set; }
+        public long Id { get; set; }
 
         [Required]
         public string FirstName { get; set; }
