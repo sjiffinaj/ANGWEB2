@@ -12,8 +12,8 @@ using Web.Entity.Context;
 namespace Web.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20221114171508_v1")]
-    partial class v1
+    [Migration("20221115155305_V1")]
+    partial class V1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -63,7 +63,7 @@ namespace Web.Migrations
 
                     b.HasIndex("ProductId");
 
-                    b.ToTable("DailyProductDetail");
+                    b.ToTable("DailyProductDetails");
                 });
 
             modelBuilder.Entity("Web.Entity.DineInTable", b =>
@@ -95,7 +95,7 @@ namespace Web.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("DineInTable");
+                    b.ToTable("DineInTables");
                 });
 
             modelBuilder.Entity("Web.Entity.Order", b =>
@@ -141,7 +141,7 @@ namespace Web.Migrations
 
                     b.HasIndex("DineInTableId");
 
-                    b.ToTable("Order");
+                    b.ToTable("Orders");
                 });
 
             modelBuilder.Entity("Web.Entity.OrderDetail", b =>
@@ -182,7 +182,7 @@ namespace Web.Migrations
 
                     b.HasIndex("ProductId");
 
-                    b.ToTable("OrderDetail");
+                    b.ToTable("OrderDetails");
                 });
 
             modelBuilder.Entity("Web.Entity.Product", b =>
@@ -224,7 +224,7 @@ namespace Web.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Product");
+                    b.ToTable("Products");
                 });
 
             modelBuilder.Entity("Web.Entity.ProductStock", b =>
@@ -262,7 +262,7 @@ namespace Web.Migrations
 
                     b.HasIndex("StockId");
 
-                    b.ToTable("ProductStock");
+                    b.ToTable("ProductStocks");
                 });
 
             modelBuilder.Entity("Web.Entity.Stock", b =>
@@ -301,7 +301,7 @@ namespace Web.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Stock");
+                    b.ToTable("Stocks");
                 });
 
             modelBuilder.Entity("Web.Entity.StockDetail", b =>
@@ -337,7 +337,7 @@ namespace Web.Migrations
 
                     b.HasIndex("StockId");
 
-                    b.ToTable("StockDetail");
+                    b.ToTable("StockDetails");
                 });
 
             modelBuilder.Entity("Web.Entity.User", b =>

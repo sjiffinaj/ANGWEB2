@@ -13,7 +13,14 @@ namespace Web.Entity.Context
 
         public DbSet<User> Users { get; set; }
         public DbSet<UserType> UserTypes { get; set; }
-
+        public DbSet<Stock> Stocks { get; set; }
+        public DbSet<StockDetail> StockDetails { get; set; }
+        public DbSet<Product> Products { get; set; }
+        public DbSet<DailyProductDetail> DailyProductDetails { get; set; }
+        public DbSet<ProductStock> ProductStocks { get; set; }
+        public DbSet<Order> Orders { get; set; }
+        public DbSet<OrderDetail> OrderDetails { get; set; }
+        public DbSet<DineInTable> DineInTables { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
